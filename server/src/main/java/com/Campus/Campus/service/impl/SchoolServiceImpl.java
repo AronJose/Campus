@@ -4,11 +4,14 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.Campus.Campus.entity.School;
+import com.Campus.Campus.exception.NotFoundException;
 import com.Campus.Campus.repository.SchoolRepository;
 import com.Campus.Campus.service.SchoolService;
 import com.Campus.Campus.view.SchoolView;
@@ -36,6 +39,15 @@ public class SchoolServiceImpl implements SchoolService {
             schoolViews.add(new SchoolView(school));
         });
         return schoolViews;
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer schoolId) throws NotFoundException {
+        schoolRepository.delete(
+            schoolRepository.findBySchoolId(schoolId)
+                        .orElseThrow(NotFoundException::new)
+        );
     }
 
 }
