@@ -15,5 +15,7 @@ public interface SchoolService {
     List<SchoolView>list();
 
     void delete(Integer schoolId) throws NotFoundException;
+
+    SchoolView get(Integer schoolId) throws NotFoundException;
     
 }

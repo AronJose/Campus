@@ -48,4 +48,10 @@ public class SchoolServiceImpl implements SchoolService {
         );
     }
 
+    @Override
+    public SchoolView get(Integer schoolId) throws NotFoundException{
+        return schoolRepository.findBySchoolId(schoolId).map((school)->{
+            return new SchoolView(school);
+        }).orElseThrow(NotFoundException::new);
+    }
 }
