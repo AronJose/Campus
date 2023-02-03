@@ -6,6 +6,7 @@ public class SchoolView {
     
     private Integer schoolId;
     private Integer userId;
+    private String fullName;
     private String  schoolName;
     private String place;
     private String address;
@@ -17,6 +18,7 @@ public class SchoolView {
     public SchoolView(School school){
         this.schoolId = school.getSchoolId();
         this.userId = school.getUserId().getUserId();
+        this.fullName = school.getUserId().getFullName();
         this.schoolName = school.getSchoolName();
         this.place = school.getPlace();
         this.address = school.getAddress();
@@ -103,6 +105,16 @@ public class SchoolView {
 
     public void setPrinciple(String principle) {
         this.principle = principle;
+    }
+
+
+    public String getFullName() {
+        return fullName;
+    }
+
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     
