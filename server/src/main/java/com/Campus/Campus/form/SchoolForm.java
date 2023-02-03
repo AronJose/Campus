@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 public class SchoolForm {
 
     @NotNull
-    private Integer user;
+    private Integer userId;
     @NotNull
     private String schoolName;
     @NotNull
@@ -20,11 +20,11 @@ public class SchoolForm {
     private String principal;
 
     
-    public Integer getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
-    public void setUser(Integer user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
     public String getSchoolName() {
         return schoolName;

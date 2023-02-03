@@ -1,6 +1,5 @@
 package com.Campus.Campus.service.impl;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.Campus.Campus.entity.School;
 import com.Campus.Campus.exception.NotFoundException;
@@ -25,8 +23,8 @@ public class SchoolServiceImpl implements SchoolService {
     private SchoolRepository schoolRepository;
 
     @Override
-    public SchoolView add(School form) {
-        return new SchoolView(schoolRepository.save(new School(form.getUser(),form.getSchoolName(),form.getPlace(),form.getAddress(),form.getContact(),form.getEmail(),form.getPrincipal())));
+    public SchoolView add(School school) {
+        return new SchoolView(schoolRepository.save(new School(school.getUserId(),school.getSchoolName(),school.getPlace(),school.getAddress(),school.getContact(),school.getEmail(),school.getPrincipal())));
     }
     
     // list All schools

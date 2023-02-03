@@ -74,6 +74,7 @@ public class School {
 
 
     public School(SchoolForm form) {
+        
         this.schoolName = form.getSchoolName();
         this.place = form.getPlace();
         this.address = form.getAddress();
@@ -152,7 +153,7 @@ public class School {
         this.updateDate = updateDate;
     }
 
-    public User getUser() {
+    public User getUserId() {
         return user;
     }
 
@@ -164,7 +165,7 @@ public class School {
         this.email = email;
     }
 
-    public void setUser(User user) {
+    public void setUserId(User user) {
         this.user = user;
     }
 

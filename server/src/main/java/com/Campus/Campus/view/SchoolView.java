@@ -16,7 +16,7 @@ public class SchoolView {
 
     public SchoolView(School school){
         this.schoolId = school.getSchoolId();
-        this.userId = school.getUser().getUserId();
+        this.userId = school.getUserId().getUserId();
         this.schoolName = school.getSchoolName();
         this.place = school.getPlace();
         this.address = school.getAddress();

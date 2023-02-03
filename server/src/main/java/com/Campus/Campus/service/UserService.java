@@ -1,5 +1,7 @@
 package com.Campus.Campus.service;
 
+import java.util.List;
+
 import org.springframework.validation.Errors;
 
 import com.Campus.Campus.exception.BadRequestException;
@@ -15,4 +17,9 @@ public interface UserService {
     LoginView login(LoginForm form, Errors errors) throws BadRequestException;
 
     LoginView refresh(String refreshToken) throws BadRequestException;
+
+    List<UserView>list();
+
+    // list role1
+    List<UserView>list1();
 }

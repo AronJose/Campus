@@ -25,6 +25,8 @@ import com.Campus.Campus.view.UserView;
 
 import static com.Campus.Campus.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -88,6 +90,8 @@ public class UserServiceImpl implements UserService {
                 new LoginView.TokenView(refreshToken, status.expiry));
     }
 
+    // AddUsers
+
     @Override
     public UserView add(UserForm form) {
 
@@ -108,6 +112,30 @@ public class UserServiceImpl implements UserService {
 
         )));
 
+    }
+
+// List of Users
+    @Override
+    public List<UserView>list()
+    {
+        List<UserView>userViews = new ArrayList<>();
+        List<User>users = userRepository.findAll();
+        users.forEach(user ->{
+            userViews.add(new UserView(user));
+        });
+        return userViews;
+    }
+
+    // list rol2 1
+    @Override
+    public List<UserView>list1()
+    {
+        List<UserView>userViews = new ArrayList<>();
+        List<User>users = userRepository.findAllrole();
+        users.forEach(user ->{
+            userViews.add(new UserView(user));
+        });
+        return userViews;
     }
 
     private static BadRequestException badRequestException() {
