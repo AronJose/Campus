@@ -74,7 +74,6 @@ public class School {
 
 
     public School(SchoolForm form) {
-        
         this.schoolName = form.getSchoolName();
         this.place = form.getPlace();
         this.address = form.getAddress();
@@ -88,6 +87,20 @@ public class School {
         this.createDate = dt;
         this.updateDate = dt;
     }
+
+    public School update(SchoolForm form) {
+        this.schoolName = form.getSchoolName();
+        this.place = form.getPlace();
+        this.address = form.getAddress();
+        this.contact = form.getContact();
+        this.email = form.getEmail();
+        this.principal = form.getPrincipal();
+        Date dt = new Date();
+        this.updateDate = dt;
+
+        return this;
+    }
+
 
     public Integer getSchoolId() {
         return schoolId;
@@ -176,5 +189,7 @@ public class School {
     public void setPrincipal(String principal) {
         this.principal = principal;
     }
+
+   
 
 }

@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Campus.Campus.entity.School;
+import com.Campus.Campus.form.SchoolForm;
 import com.Campus.Campus.service.SchoolService;
 import com.Campus.Campus.view.SchoolView;
 
@@ -44,5 +46,12 @@ public class SchoolController {
     @GetMapping("/{schoolId}")
     public SchoolView get(@PathVariable("schoolId") Integer schoolId) {
         return schoolService.get(schoolId);
+    }
+
+    @PutMapping("/{schoolId}")
+    public SchoolView update(
+            @PathVariable("schoolId") Integer schoolId,
+            @Valid @RequestBody SchoolForm form) {
+        return schoolService.update(schoolId, form);
     }
 }

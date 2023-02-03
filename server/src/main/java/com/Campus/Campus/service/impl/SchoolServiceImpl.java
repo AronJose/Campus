@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.Campus.Campus.entity.School;
 import com.Campus.Campus.exception.NotFoundException;
+import com.Campus.Campus.form.SchoolForm;
 import com.Campus.Campus.repository.SchoolRepository;
 import com.Campus.Campus.service.SchoolService;
 import com.Campus.Campus.view.SchoolView;
@@ -53,5 +54,14 @@ public class SchoolServiceImpl implements SchoolService {
         return schoolRepository.findBySchoolId(schoolId).map((school)->{
             return new SchoolView(school);
         }).orElseThrow(NotFoundException::new);
+    }
+
+    @Override
+    @Transactional
+    public SchoolView update(Integer schoolId, SchoolForm form) throws NotFoundException {
+        return schoolRepository.findBySchoolId(schoolId)
+                .map((school) -> {
+                    return new SchoolView(schoolRepository.save(school.update(form)));
+                }).orElseThrow(NotFoundException::new);
     }
 }
