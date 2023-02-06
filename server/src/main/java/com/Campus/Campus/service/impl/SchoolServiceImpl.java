@@ -64,4 +64,12 @@ public class SchoolServiceImpl implements SchoolService {
                     return new SchoolView(schoolRepository.save(school.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
+
+    // search
+    @Override
+    public List<School>getSchoolSearch(String keyword){
+    System.out.println(keyword);
+    List<School> pagedResult = schoolRepository.findByName(keyword);
+    return pagedResult;
+    }
 }

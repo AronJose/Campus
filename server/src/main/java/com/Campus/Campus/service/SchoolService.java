@@ -20,5 +20,8 @@ public interface SchoolService {
     SchoolView get(Integer schoolId) throws NotFoundException;
 
     SchoolView update(Integer schoolId,SchoolForm form) throws NotFoundException;
+
+    // search
+    List<School>getSchoolSearch(String keyword);
     
 }
