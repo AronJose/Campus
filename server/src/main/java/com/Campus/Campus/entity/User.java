@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.sql.Update;
+
 import com.Campus.Campus.form.UserForm;
 
 @Entity
@@ -77,6 +79,19 @@ public class User {
         Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
+    }
+
+    public User update(UserForm form) {
+        this.fullName = form.getFullName();
+        this.dob = form.getDob();
+        this.email = form.getEmail();
+        this.phone = form.getPhone();
+        this.address = form.getAddress();
+        this.password = form.getPassword();
+        this.role = form.getRole();
+        Date dt = new Date();
+        this.updateDate = dt;
+        return this;
     }
 
     public Integer getUserId() {

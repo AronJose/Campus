@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -155,6 +157,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserId(userId).map((user)->{
             return new UserView(user);
         }).orElseThrow(NotFoundException::new);
+    }
+
+    @Override
+    @Transactional
+    public UserView update(Integer userId, UserForm form) throws NotFoundException {
+        return userRepository.findByUserId(userId)
+                .map((user) -> {
+
+                    return new UserView(userRepository.save(user.update(form)));
+                }).orElseThrow(NotFoundException::new);
     }
 
     private static BadRequestException badRequestException() {

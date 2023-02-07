@@ -27,4 +27,6 @@ public interface UserService {
     List<UserView>list2();
 
     UserView get(Integer userId) throws NotFoundException;
+
+    UserView update(Integer userId,UserForm form) throws NotFoundException;
 }
