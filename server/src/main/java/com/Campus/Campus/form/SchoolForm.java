@@ -11,7 +11,7 @@ public class SchoolForm {
     private String schoolName;
     @NotNull
     private String place;
-    @NotNull
+    // @NotNull
     private String address;
     @NotNull
     private String contact;

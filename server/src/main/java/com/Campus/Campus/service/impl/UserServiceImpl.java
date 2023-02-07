@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.Campus.Campus.view.LoginView;
 import com.Campus.Campus.entity.User;
 import com.Campus.Campus.exception.BadRequestException;
+import com.Campus.Campus.exception.NotFoundException;
 import com.Campus.Campus.form.LoginForm;
 import com.Campus.Campus.form.UserForm;
 import org.springframework.validation.Errors;
@@ -138,7 +139,27 @@ public class UserServiceImpl implements UserService {
         return userViews;
     }
 
+    @Override
+    public List<UserView>list2()
+    {
+        List<UserView>userViews = new ArrayList<>();
+        List<User>users = userRepository.findAllrole1();
+        users.forEach(user ->{
+            userViews.add(new UserView(user));
+        });
+        return userViews;
+    }
+
+    @Override
+    public UserView get(Integer userId) throws NotFoundException{
+        return userRepository.findByUserId(userId).map((user)->{
+            return new UserView(user);
+        }).orElseThrow(NotFoundException::new);
+    }
+
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
+
+
 }

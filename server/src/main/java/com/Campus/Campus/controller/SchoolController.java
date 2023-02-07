@@ -65,6 +65,7 @@ public class SchoolController {
     public ResponseEntity<List<School>>getSchool(
             @RequestParam(defaultValue = "") String keyword)
             {
+                System.out.println("hellow");
                 List<School> list = schoolService.getSchoolSearch(keyword);
                 return new ResponseEntity<List<School>>(list, new HttpHeaders(),
                 HttpStatus.OK);

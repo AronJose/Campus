@@ -21,4 +21,9 @@ public interface UserRepository extends Repository<User, Integer> {
     // list role 1
     @Query(value = "SELECT * FROM campus.user WHERE role=2", nativeQuery = true)
     List<User> findAllrole();
+
+    @Query(value = "SELECT * FROM campus.user WHERE role=3", nativeQuery = true)
+    List<User> findAllrole1();
+
+    Optional<User> findByUserId(Integer userId);
 }

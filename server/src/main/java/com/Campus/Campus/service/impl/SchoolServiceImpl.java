@@ -59,8 +59,10 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     @Transactional
     public SchoolView update(Integer schoolId, SchoolForm form) throws NotFoundException {
+        System.out.println("hellow");
         return schoolRepository.findBySchoolId(schoolId)
                 .map((school) -> {
+
                     return new SchoolView(schoolRepository.save(school.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
@@ -68,7 +70,7 @@ public class SchoolServiceImpl implements SchoolService {
     // search
     @Override
     public List<School>getSchoolSearch(String keyword){
-    System.out.println(keyword);
+    System.out.println("hellow");
     List<School> pagedResult = schoolRepository.findByName(keyword);
     return pagedResult;
     }

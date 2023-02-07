@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.validation.Errors;
 
 import com.Campus.Campus.exception.BadRequestException;
+import com.Campus.Campus.exception.NotFoundException;
 import com.Campus.Campus.form.LoginForm;
 import com.Campus.Campus.form.UserForm;
 import com.Campus.Campus.view.LoginView;
@@ -22,4 +23,8 @@ public interface UserService {
 
     // list role1
     List<UserView>list1();
+
+    List<UserView>list2();
+
+    UserView get(Integer userId) throws NotFoundException;
 }
