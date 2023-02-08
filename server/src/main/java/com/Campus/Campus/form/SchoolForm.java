@@ -3,10 +3,12 @@ package com.Campus.Campus.form;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+import com.Campus.Campus.entity.User;
+
 public class SchoolForm {
 
     @NotNull
-    private Integer userId;
+    private User userId;
     @NotNull
     private String schoolName;
     @NotNull
@@ -20,10 +22,10 @@ public class SchoolForm {
     private String principal;
 
     
-    public Integer getUserId() {
+    public User getUserId() {
         return userId;
     }
-    public void setUserId(Integer userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
     public String getSchoolName() {

@@ -24,7 +24,7 @@ public class SchoolServiceImpl implements SchoolService {
     private SchoolRepository schoolRepository;
 
     @Override
-    public SchoolView add(School school) {
+    public SchoolView add(SchoolForm school) {
         return new SchoolView(schoolRepository.save(new School(school.getUserId(),school.getSchoolName(),school.getPlace(),school.getAddress(),school.getContact(),school.getEmail(),school.getPrincipal())));
     }
     

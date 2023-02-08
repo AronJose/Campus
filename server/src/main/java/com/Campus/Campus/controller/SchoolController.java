@@ -33,7 +33,7 @@ public class SchoolController {
     private SchoolService schoolService;
 
     @PostMapping
-    public SchoolView add(@Valid @RequestBody School form)
+    public SchoolView add(@Valid @RequestBody SchoolForm form)
     {
         return schoolService.add(form);
     }

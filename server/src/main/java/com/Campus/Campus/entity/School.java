@@ -74,6 +74,7 @@ public class School {
 
 
     public School(SchoolForm form) {
+        this.user = form.getUserId();
         this.schoolName = form.getSchoolName();
         this.place = form.getPlace();
         this.address = form.getAddress();
@@ -89,6 +90,7 @@ public class School {
     }
 
     public School update(SchoolForm form) {
+        this.user = form.getUserId();
         this.schoolName = form.getSchoolName();
         this.place = form.getPlace();
         this.address = form.getAddress();

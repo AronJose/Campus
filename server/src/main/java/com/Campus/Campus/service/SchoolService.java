@@ -10,7 +10,7 @@ import com.Campus.Campus.view.SchoolView;
 
 public interface SchoolService {
 
-    SchoolView add(School form);
+    SchoolView add(SchoolForm form);
 
     // list All schools
     List<SchoolView>list();

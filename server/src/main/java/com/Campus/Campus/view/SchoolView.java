@@ -12,7 +12,7 @@ public class SchoolView {
     private String address;
     private String contact;
     private String email;
-    private String principle;
+   
     
 
     public SchoolView(School school){
@@ -24,7 +24,6 @@ public class SchoolView {
         this.address = school.getAddress();
         this.contact = school.getContact();
         this.email = school.getEmail();
-        this.principle = school.getPrincipal();
     }
 
 
@@ -98,14 +97,6 @@ public class SchoolView {
     }
 
 
-    public String getPrinciple() {
-        return principle;
-    }
-
-
-    public void setPrinciple(String principle) {
-        this.principle = principle;
-    }
 
 
     public String getFullName() {
