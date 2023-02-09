@@ -3,10 +3,13 @@ package com.Campus.Campus.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Campus.Campus.entity.Student;
+import com.Campus.Campus.exception.NotFoundException;
 import com.Campus.Campus.form.StudentForm;
 import com.Campus.Campus.repository.StudentRepository;
 import com.Campus.Campus.service.StudentService;
@@ -32,5 +35,21 @@ public class StudentServiceImpl implements StudentService {
             studentViews.add(new StudentView(student));
         });
         return studentViews;
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer studentId) throws NotFoundException {
+        studentRepository.delete(
+            studentRepository.findByStudentId(studentId)
+                        .orElseThrow(NotFoundException::new)
+        );  
+    }
+
+    @Override
+    public StudentView get(Integer studentId) throws NotFoundException{
+        return studentRepository.findByStudentId(studentId).map((student)->{
+            return new StudentView(student);
+        }).orElseThrow(NotFoundException::new);
     }
 }
