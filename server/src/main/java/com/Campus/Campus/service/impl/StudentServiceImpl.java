@@ -1,5 +1,8 @@
 package com.Campus.Campus.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +23,14 @@ public class StudentServiceImpl implements StudentService {
         return new StudentView(studentRepository.save(new Student(form.getUserId(),form.getSchoolId(),form.getStudentName(),form.getDob(),form.getAddress(),form.getContact(),form.getEmail())));
     }
     
+    @Override
+    public List<StudentView>list()
+    {
+        List<StudentView>studentViews = new ArrayList<>();
+        List<Student>students = studentRepository.findAll();
+        students.forEach(student ->{
+            studentViews.add(new StudentView(student));
+        });
+        return studentViews;
+    }
 }
