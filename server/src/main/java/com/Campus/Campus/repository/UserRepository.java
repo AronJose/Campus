@@ -26,4 +26,6 @@ public interface UserRepository extends Repository<User, Integer> {
     List<User> findAllrole1();
 
     Optional<User> findByUserId(Integer userId);
+
+    void delete(User orElseThrow);
 }

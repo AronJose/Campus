@@ -169,6 +169,15 @@ public class UserServiceImpl implements UserService {
                 }).orElseThrow(NotFoundException::new);
     }
 
+    @Override
+    @Transactional
+    public void delete(Integer userId) throws NotFoundException {
+        userRepository.delete(
+            userRepository.findByUserId(userId)
+                        .orElseThrow(NotFoundException::new)
+        );
+    }
+
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }

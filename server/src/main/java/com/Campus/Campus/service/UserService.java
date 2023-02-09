@@ -29,4 +29,6 @@ public interface UserService {
     UserView get(Integer userId) throws NotFoundException;
 
     UserView update(Integer userId,UserForm form) throws NotFoundException;
+
+    void delete(Integer userId) throws NotFoundException;
 }
