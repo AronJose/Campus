@@ -22,7 +22,7 @@ public class StudentView {
         this.dob = student.getDob();
         this.address = student.getAddress();
         this.contact = student.getContact();
-        this.email = student.getContact();
+        this.email = student.getEmail();
     }
 
     public Integer getUserId() {

@@ -52,4 +52,15 @@ public class StudentServiceImpl implements StudentService {
             return new StudentView(student);
         }).orElseThrow(NotFoundException::new);
     }
+
+    @Override
+    @Transactional
+    public StudentView update(Integer studentId, StudentForm form) throws NotFoundException {
+        System.out.println("hellow");
+        return studentRepository.findByStudentId(studentId)
+                .map((student) -> {
+
+                    return new StudentView(studentRepository.save(student.update(form)));
+                }).orElseThrow(NotFoundException::new);
+    }
 }

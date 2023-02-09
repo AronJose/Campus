@@ -15,4 +15,6 @@ public interface StudentService {
     void delete(Integer studentId) throws NotFoundException;
     
     StudentView get(Integer studentId) throws NotFoundException;
+
+    StudentView update(Integer studentId,StudentForm form) throws NotFoundException;
 }

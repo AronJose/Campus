@@ -88,6 +88,21 @@ public class Student {
         this.updateDate = dt;
     }
 
+    public Student update(StudentForm form) {
+        this.user = form.getUserId();
+        this.school =form.getSchoolId();
+        this.studentName = form.getStudentName();
+        this.dob = form.getDob();
+        this.address = form.getAddress();
+        this.contact = form.getContact();
+        this.email = form.getEmail();
+        Date dt = new Date();
+        this.updateDate = dt;
+
+        return this;
+    }
+
+
     public Integer getStudentId() {
         return studentId;
     }
