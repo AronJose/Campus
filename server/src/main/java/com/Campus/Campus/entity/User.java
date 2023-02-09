@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.sql.Update;
 
 import com.Campus.Campus.form.UserForm;
 
