@@ -7,6 +7,7 @@ public class StudentView {
 
     private Integer userId;
     private Integer schoolId;
+    private String schoolName;
     private Integer studentId;
     private String studentName;
     private Date dob;
@@ -17,6 +18,7 @@ public class StudentView {
     public StudentView(Student student) {
         this.userId = student.getUser().getUserId();
         this.schoolId = student.getSchool().getSchoolId();
+        this.schoolName = student.getSchool().getSchoolName();
         this.studentId = student.getStudentId();
         this.studentName = student.getStudentName();
         this.dob = student.getDob();
@@ -87,6 +89,14 @@ public class StudentView {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
 }

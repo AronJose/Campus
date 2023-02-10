@@ -59,22 +59,19 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional
     public StudentView update(Integer studentId, StudentForm form) throws NotFoundException {
-        System.out.println("hellow");
+        // if(studentRepository.findByStudentId(studentId).isPresent()){
+        //     System.out.println("helow");
+        // }
         return studentRepository.findByStudentId(studentId)
                 .map((student) -> {
-
+                    System.out.println("helllllow"+student.getStudentId());
                     return new StudentView(studentRepository.save(student.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
 
     @Override
     public List< StudentView> get() throws NotFoundException {
-        // return studentRepository.findByUserUserId(SecurityUtil.getCurrentUserId());
-                // .map((student) -> {
-                //     return new StudentView(student);
-                // }).orElseThrow(NotFoundException::new);
-
-             List<StudentView>studentViews=studentRepository.findByUserUserId(SecurityUtil.getCurrentUserId())
+          List<StudentView>studentViews=studentRepository.findByUserUserId(SecurityUtil.getCurrentUserId())
                 .stream().map(StudentView::new).collect(Collectors.toList());
                 return studentViews;
     }

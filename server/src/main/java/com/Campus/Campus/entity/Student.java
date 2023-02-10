@@ -89,7 +89,6 @@ public class Student {
     }
 
     public Student update(StudentForm form) {
-        this.user = form.getUserId();
         this.school =form.getSchoolId();
         this.studentName = form.getStudentName();
         this.dob = form.getDob();
