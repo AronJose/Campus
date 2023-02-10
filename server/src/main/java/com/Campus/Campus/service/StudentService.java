@@ -17,4 +17,6 @@ public interface StudentService {
     StudentView get(Integer studentId) throws NotFoundException;
 
     StudentView update(Integer studentId,StudentForm form) throws NotFoundException;
+
+    List<StudentView> get() throws NotFoundException;
 }

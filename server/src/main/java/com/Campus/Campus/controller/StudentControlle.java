@@ -51,4 +51,9 @@ public class StudentControlle {
             @Valid @RequestBody StudentForm form) {
         return studentService.update(studentId, form);
     }
+
+    @GetMapping("/current")
+    public List <StudentView >get() {
+        return studentService.get();
+    }
 }

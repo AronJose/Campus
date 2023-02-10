@@ -16,4 +16,6 @@ public interface StudentRepository extends Repository<Student,Integer> {
     void delete(Student orElseThrow);
 
     Optional<Student> findByStudentId(Integer studentId);
+
+     List<Student>findByUserUserId(Integer userId);
 }

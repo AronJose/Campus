@@ -2,6 +2,8 @@ package com.Campus.Campus.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -63,5 +65,17 @@ public class StudentServiceImpl implements StudentService {
 
                     return new StudentView(studentRepository.save(student.update(form)));
                 }).orElseThrow(NotFoundException::new);
+    }
+
+    @Override
+    public List< StudentView> get() throws NotFoundException {
+        // return studentRepository.findByUserUserId(SecurityUtil.getCurrentUserId());
+                // .map((student) -> {
+                //     return new StudentView(student);
+                // }).orElseThrow(NotFoundException::new);
+
+             List<StudentView>studentViews=studentRepository.findByUserUserId(SecurityUtil.getCurrentUserId())
+                .stream().map(StudentView::new).collect(Collectors.toList());
+                return studentViews;
     }
 }
