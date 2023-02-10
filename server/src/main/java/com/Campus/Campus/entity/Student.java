@@ -54,8 +54,8 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public Student(User user,School school,String studentName,Date dob,String address,String contact,String email){
-        this.user = user;
+    public Student(Integer userId,School school,String studentName,Date dob,String address,String contact,String email){
+        this.user = new User(userId);
         this.school = school;
         this.studentName = studentName;
         this.dob = dob;

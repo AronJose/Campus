@@ -9,7 +9,6 @@ import com.Campus.Campus.entity.User;
 
 public class StudentForm {
 
-    @NotNull
     private User userId;
     @NotNull
     private School schoolId;

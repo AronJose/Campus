@@ -5,13 +5,13 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
+import javax.persistence.FetchType;
 import com.Campus.Campus.form.UserForm;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -42,9 +42,13 @@ public class User {
     private Date createDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @JoinColumn(name = "school_id", referencedColumnName = "school_id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private School school;
 
-    public User(String fullName, String email, String phone, String password, Integer role, Byte status, String address,
+    public User(School schoolId,String fullName, String email, String phone, String password, Integer role, Byte status, String address,
             Date dob) {
+        this.school = schoolId;
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
@@ -66,7 +70,8 @@ public class User {
     }
 
     // get values from Form
-    public User(UserForm form) {
+    public User(UserForm form){
+        this.school = form.getSchoolId();
         this.fullName = form.getFullName();
         this.dob = form.getDob();
         this.email = form.getEmail();
@@ -81,6 +86,7 @@ public class User {
     }
 
     public User update(UserForm form) {
+        this.school = form.getSchoolId();
         this.fullName = form.getFullName();
         this.dob = form.getDob();
         this.email = form.getEmail();
@@ -179,6 +185,14 @@ public class User {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
 }

@@ -12,6 +12,7 @@ import com.Campus.Campus.entity.Student;
 import com.Campus.Campus.exception.NotFoundException;
 import com.Campus.Campus.form.StudentForm;
 import com.Campus.Campus.repository.StudentRepository;
+import com.Campus.Campus.security.util.SecurityUtil;
 import com.Campus.Campus.service.StudentService;
 import com.Campus.Campus.view.StudentView;
 
@@ -23,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentView add(StudentForm form) {
-        return new StudentView(studentRepository.save(new Student(form.getUserId(),form.getSchoolId(),form.getStudentName(),form.getDob(),form.getAddress(),form.getContact(),form.getEmail())));
+        return new StudentView(studentRepository.save(new Student(SecurityUtil.getCurrentUserId(),form.getSchoolId(),form.getStudentName(),form.getDob(),form.getAddress(),form.getContact(),form.getEmail())));
     }
     
     @Override
