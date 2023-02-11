@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists!");
         }
         return new UserView(userRepository.save(new User(
-
+                form.getSchoolId(),
                 form.getFullName(),
                 form.getEmail(),
                 form.getPhone(),

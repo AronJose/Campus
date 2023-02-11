@@ -8,6 +8,7 @@ import com.Campus.Campus.json.Json;
 public class UserView {
 
     private final Integer userId;
+    private final Integer schoolId;
     private final String fullName;
     private final String email;
     @Json.DateFormat
@@ -22,6 +23,7 @@ public class UserView {
     private final Date createDate;
 
     public UserView(User user) {
+        this.schoolId = user.getSchool().getSchoolId();
         this.userId = user.getUserId();
         this.fullName = user.getFullName();
         this.email = user.getEmail();
@@ -45,6 +47,7 @@ public class UserView {
     public String getEmail() {
         return email;
     }
+
 
     public Date getDob() {
         return dob;
@@ -74,4 +77,11 @@ public class UserView {
         return createDate;
     }
 
-}
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    
+    }
+
+

@@ -6,8 +6,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class UserForm {
+import com.Campus.Campus.entity.School;
 
+public class UserForm {
+    private School schoolId;
     @NotBlank
     @Size(min = 1, max = 50)
     private String fullName;
@@ -23,6 +25,7 @@ public class UserForm {
     private Integer role;
     private byte status;
 
+    
     public Date getDob() {
         return dob;
     }
@@ -86,5 +89,15 @@ public class UserForm {
     public void setStatus(byte status) {
         this.status = status;
     }
+
+    public School getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(School schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    
 
 }

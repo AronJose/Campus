@@ -1,20 +1,22 @@
 package com.Campus.Campus.entity;
 
 import java.util.Date;
-
-import javax.persistence.Entity;
 import javax.persistence.GenerationType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.FetchType;
-import com.Campus.Campus.form.UserForm;
+
+
+import com.Campus.Campus.form.StudentForm;
+
+import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class User {
+public class Student {
 
     public static enum Status {
         DELETE((byte) 0),
@@ -26,173 +28,146 @@ public class User {
             this.value = value;
         }
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-    private String fullName;
+    private Integer studentId;
+    private String studentName;
     private Date dob;
-    private String phone;
     private String address;
+    private String contact;
     private String email;
-    private String password;
-    private Integer role;
     private byte status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private User user;
     @JoinColumn(name = "school_id", referencedColumnName = "school_id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private School school;
 
-    public User(School schoolId,String fullName, String email, String phone, String password, Integer role, Byte status, String address,
-            Date dob) {
-        this.school = schoolId;
-        this.fullName = fullName;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-        this.role = role;
-        this.status = Status.ACTIVE.value;
-        this.address = address;
+    public Student(){}
+
+    public Student(Integer studentId){
+        this.studentId = studentId;
+    }
+
+    public Student(Integer userId,School school,String studentName,Date dob,String address,String contact,String email){
+        this.user = new User(userId);
+        this.school = school;
+        this.studentName = studentName;
         this.dob = dob;
-        Date dt = new Date();
-        this.createDate = dt;
-        this.updateDate = dt;
-    }
+        this.address = address;
+        this.contact = contact;
+        this.email = email;
 
-    public User() {
-    }
-
-    public User(Integer userId) {
-        this.userId = userId;
-    }
-
-    // get values from Form
-    public User(UserForm form){
-        this.school = form.getSchoolId();
-        this.fullName = form.getFullName();
-        this.dob = form.getDob();
-        this.email = form.getEmail();
-        this.phone = form.getPhone();
-        this.address = form.getAddress();
-        this.password = form.getPassword();
-        this.role = form.getRole();
         this.status = Status.ACTIVE.value;
+
+        Date dt = new Date();
+        this.createDate = dt;
+        this.updateDate = dt;
+
+    }
+
+    // save 
+    public Student(StudentForm form){
+        this.user = form.getUserId();
+        this.school =form.getSchoolId();
+        this.studentName = form.getStudentName();
+        this.dob = form.getDob();
+        this.address = form.getAddress();
+        this.contact = form.getContact();
+        this.email = form.getEmail();
+
+        this.status = Status.ACTIVE.value;
+
         Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
     }
 
-    public User update(UserForm form) {
-        this.school = form.getSchoolId();
-        this.fullName = form.getFullName();
+    public Student update(StudentForm form) {
+        this.school =form.getSchoolId();
+        this.studentName = form.getStudentName();
         this.dob = form.getDob();
-        this.email = form.getEmail();
-        this.phone = form.getPhone();
         this.address = form.getAddress();
-        this.password = form.getPassword();
-        this.role = form.getRole();
+        this.contact = form.getContact();
+        this.email = form.getEmail();
         Date dt = new Date();
         this.updateDate = dt;
+
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public Integer getStudentId() {
+        return studentId;
     }
-
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+    public String getStudentName() {
+        return studentName;
+    }
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
     public Date getDob() {
         return dob;
     }
-
     public void setDob(Date dob) {
         this.dob = dob;
     }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
-
+    public String getContact() {
+        return contact;
+    }
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
     public byte getStatus() {
         return status;
     }
-
     public void setStatus(byte status) {
         this.status = status;
     }
-
     public Date getCreateDate() {
         return createDate;
     }
-
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-
     public Date getUpdateDate() {
         return updateDate;
     }
-
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
     public School getSchool() {
         return school;
     }
-
     public void setSchool(School school) {
         this.school = school;
     }
 
+    
 }
